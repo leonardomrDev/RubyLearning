@@ -20,7 +20,7 @@ def inicio
 end
 
 def pede_numero
-    puts 'Chutes até agora: '
+    
     puts 'Entre com o número escolhido:'
 
     #pega o número escolhido pelo usuário
@@ -33,6 +33,7 @@ def pede_numero
 
     puts "\n"
     tentativa.to_i
+
 end
 
 def verifica numero_secreto, tentativa, nome
@@ -54,9 +55,12 @@ def verifica numero_secreto, tentativa, nome
     verifica
 end
 
+puts 'Estamos selecionando um número secreto entre 0 e 200...'
+numero_secreto = 175
+
 nome = inicio
 limite_tentativas = 5
-chutes = []
+ultimo_escolhido = -1
 
 for rodadas in 1..limite_tentativas
 
@@ -66,11 +70,13 @@ for rodadas in 1..limite_tentativas
 
     puts "\n"
 
-    puts 'Estamos selecionando um número secreto entre 0 e 200...'
-    numero_secreto = 175
+    puts 'O último chute foi: ' + ultimo_escolhido.to_s
+
+    puts "\n"
 
     tentativa = pede_numero
-    
+    ultimo_escolhido = tentativa
+
     verifica numero_secreto, tentativa, nome
     break if numero_secreto == tentativa
      
