@@ -56,7 +56,7 @@ def verifica numero_secreto, tentativa, nome
 end
 
 puts 'Estamos selecionando um número secreto entre 0 e 200...'
-numero_secreto = 175
+numero_secreto = rand 200
 
 nome = inicio
 limite_tentativas = 5
