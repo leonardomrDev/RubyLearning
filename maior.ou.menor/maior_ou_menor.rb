@@ -2,6 +2,7 @@ def inicio
     puts "------------------------------------------------------------------------------"
     puts 'Bem-vindo ao jogo da adivinhação!'
     puts "------------------------------------------------------------------------------"
+    sleep(1)
     puts 'Qual é seu nome?'
     puts "\n"
 
@@ -17,6 +18,39 @@ def inicio
     puts "\n"
 
     nome
+end
+
+def pede_dificuldade
+    puts "Para nossa nova partida, qual será sua escolha de dificuldade?"
+    sleep(1)
+    puts "------------------------------------------------------------------------------"
+    puts "(1) Muito Fácil (2) Fácil (3) Normal (4) Difícil (5) Muito Difícil"
+    sleep(1)
+    puts "------------------------------------------------------------------------------"
+    puts "Escolha!"
+    dificuldade = gets.to_i
+end
+
+def sorteio_numerosecreto(dificuldade)
+
+    case dificuldade
+    when 1
+        maximo = 30
+    when 2
+        maximo = 60
+    when 3
+        maximo = 100
+    when 4
+        maximo = 150
+    else
+        maximo = 200
+    end
+
+    puts "Estamos selecionando um número secreto entre 0 e #{maximo}..."
+    numero_secreto = rand(maximo) + 1
+    puts "Número selecionado, tente adivinhar!"
+    numero_secreto
+
 end
 
 def pede_numero
@@ -55,12 +89,11 @@ def verifica numero_secreto, tentativa, nome
     verifica
 end
 
-puts 'Estamos selecionando um número secreto entre 0 e 200...'
-numero_secreto = rand 200
-
 nome = inicio
+dificuldade = pede_dificuldade
+numero_secreto = sorteio_numerosecreto dificuldade
 limite_tentativas = 5
-ultimo_escolhido = -1
+ultimo_escolhido = 0
 
 for rodadas in 1..limite_tentativas
 
@@ -79,8 +112,10 @@ for rodadas in 1..limite_tentativas
 
     verifica numero_secreto, tentativa, nome
     break if numero_secreto == tentativa
+
         
     puts "\n"
 
     puts "------------------------------------------------------------------------------"
+
 end
