@@ -79,7 +79,7 @@ for rodadas in 1..limite_tentativas
 
     verifica numero_secreto, tentativa, nome
     break if numero_secreto == tentativa
-     
+        
     puts "\n"
 
     puts "------------------------------------------------------------------------------"
